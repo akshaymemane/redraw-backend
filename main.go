@@ -47,5 +47,5 @@ func handleConnection(w http.ResponseWriter, r *http.Request) {
 func main() {
 	http.HandleFunc("/ws", handleConnection)
 
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Fatal(http.ListenAndServe(":8100", nil))
 }
