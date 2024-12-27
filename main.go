@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 
@@ -48,11 +47,5 @@ func handleConnection(w http.ResponseWriter, r *http.Request) {
 func main() {
 	http.HandleFunc("/ws", handleConnection)
 
-	certFile := "/etc/letsencrypt/live/time-card.app/fullchain.pem"
-	keyFile := "/etc/letsencrypt/live/time-card.app/privkey.pem"
-	fmt.Println("Starting WebSocket server on wss://time-card.app:8100")
-	err := http.ListenAndServeTLS(":8100", certFile, keyFile, nil)
-	if err != nil {
-		log.Fatal("ListenAndServeTLS: ", err)
-	}
+	log.Fatal(http.ListenAndServe(":8100", nil))
 }
